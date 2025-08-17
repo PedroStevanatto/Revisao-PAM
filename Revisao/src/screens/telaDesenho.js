@@ -1,35 +1,32 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import imagemMulher from '../assets/casual_dog.png';
-import google from '../assets/Google.png';
+import { useNavigation } from "@react-navigation/native";
+import imagemMulher from "../assets/casual_dog.png";
+import google from "../assets/Google.png";
 
-export default function telaDesenho() {
+export default function TelaDesenho() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
 
-      <Image
-       source={imagemMulher}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Image source={imagemMulher} style={styles.imagem} resizeMode="contain" />
 
-      <Text style={styles.title}>Ótimo dia!</Text>
+      <Text style={styles.titulo}>Ótimo dia!</Text>
+      <Text style={styles.subTitulo}>Como deseja acessar?</Text>
 
-      <Text style={styles.subtitle}>Como deseja acessar?</Text>
-
-
-      <TouchableOpacity style={styles.googleButton}>
-        <Image
-          source={google}
-          style={styles.googleIcon}
-        />
-        <Text style={styles.googleText}>Como deseja acessar?</Text>
+      <TouchableOpacity style={styles.botaoGugu}>
+        <Image source={google} style={styles.iconeGugu} />
+        <Text style={styles.textoGugu}>Entrar com Google</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.secondaryButton}>
-        <Text style={styles.secondaryText}>Outras opções</Text>
+      <TouchableOpacity
+        style={styles.botaoOutras}
+        onPress={() => navigation.navigate("Login")}
+      >
+        <Text style={styles.textoOutras}>Outras opções</Text>
       </TouchableOpacity>
     </View>
   );
@@ -43,23 +40,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  image: {
+  imagem: {
     width: 400,
     height: 400,
     marginBottom: 20,
   },
-  title: {
+  titulo: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#333",
+    color: "#131a20",
     marginBottom: 5,
   },
-  subtitle: {
+  subTitulo: {
     fontSize: 14,
-    color: "#777",
+    color: "#131a20",
     marginBottom: 20,
   },
-  googleButton: {
+  botaoGugu: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#14C871",
@@ -70,7 +67,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
   },
-  googleIcon: {
+  iconeGugu: {
     width: 30,
     height: 30,
     position: 'absolute',
@@ -78,12 +75,12 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: 'white'
   },
-  googleText: {
+  textoGugu: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
   },
-  secondaryButton: {
+  botaoOutras: {
     borderWidth: 1,
     borderColor: "#14C871",
     backgroundColor: '#fff',
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
-  secondaryText: {
+  textoOutras: {
     fontSize: 16,
     color: "#333",
   },
